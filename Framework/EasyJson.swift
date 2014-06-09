@@ -47,8 +47,9 @@ class EasyJson {
                 var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: databaseManagerSharedInstance.databaseCore.managedObjectContext) as NSManagedObject
                 
                 for parameter in configObject.parameters {
-                    
+                    managedObject.setPropertyWithEasyJsonParameter(parameter, fromJson: jsonFormatedDictionary)
                 }
+                return managedObject
             }
             
             // 3b - CustomObject
@@ -56,7 +57,79 @@ class EasyJson {
         
         return nil
     }
+    
 
+}
+
+extension NSManagedObject {
+    func setPropertyWithEasyJsonParameter(parameter:EasyJsonObject.EasyJsonParameterObject, fromJson jsonDict:Dictionary<String, AnyObject>) {
+        if jsonDict[parameter.jsonKey] != nil {
+            
+            if let managedObjectValue : AnyObject = getValueFromJson(jsonDict, withParameter: parameter) {
+                setValue(managedObjectValue, forKey: parameter.attribute)
+            }
+        }
+    }
+    
+    func getValueFromJson(jsonDict:Dictionary<String,AnyObject>, withParameter parameter:EasyJsonObject.EasyJsonParameterObject) -> AnyObject? {
+        
+        if let propertyDescription = self.getPropertyDescriptionForEasyJsonParameter(parameter) {
+            
+            if propertyDescription is NSAttributeDescription {
+                
+                if let jsonString = jsonDict[parameter.jsonKey]! as? String {
+                    return (propertyDescription as NSAttributeDescription).getAttributeValueForEasyJsonValue(jsonString)
+                }
+                
+            } else if propertyDescription is NSRelationshipDescription {
+                
+                if let jsonArray = jsonDict[parameter.jsonKey]! as? Dictionary<String, AnyObject>[] {
+                    return (propertyDescription as NSRelationshipDescription).getRelationshipValueForEasyJsonArray(jsonArray)
+                }
+                
+            }
+        }
+        return nil
+    }
+    
+    func getPropertyDescriptionForEasyJsonParameter(parameter: EasyJsonObject.EasyJsonParameterObject) -> NSPropertyDescription? {
+        if let propertyDescription = self.entity.propertiesByName[parameter.attribute] as? NSPropertyDescription {
+            return propertyDescription
+        }
+        return nil
+    }
+  
+}
+
+
+extension NSAttributeDescription {
+    func getAttributeValueForEasyJsonValue(jsonValue:String) -> AnyObject? {
+        
+        switch(self.attributeType){
+            case .DateAttributeType:
+                return easyJsonSharedInstance.dateFormatter.dateFromString(jsonValue)
+            case .StringAttributeType:
+                return jsonValue
+            case .DecimalAttributeType,.DoubleAttributeType:
+                return NSNumber.numberWithDouble((jsonValue as NSString).doubleValue)
+            case .FloatAttributeType:
+                return (jsonValue as NSString).floatValue
+            case .Integer16AttributeType,.Integer32AttributeType,.Integer64AttributeType:
+                return (jsonValue as NSString).integerValue
+            default:
+                return nil
+        }
+    }
+}
+
+extension NSRelationshipDescription {
+    func getRelationshipValueForEasyJsonArray(jsonArray:Dictionary<String, AnyObject>[]) -> NSMutableSet {
+        var relationshipSet = NSMutableSet()
+        for jsonValue in jsonArray  {
+            relationshipSet.addObject(easyJsonSharedInstance.analyzeJsonDictionary(jsonValue, forClass: NSClassFromString(self.destinationEntity.managedObjectClassName)))
+        }
+        return relationshipSet
+    }
 }
 
 
