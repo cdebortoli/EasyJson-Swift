@@ -23,9 +23,41 @@ class EasyJson {
     }
     
     
+    // Analyze methods
+    func analyzeJsonArray(jsonArray:AnyObject[], forClass objectClass:AnyClass) -> AnyObject[] {
+        var resultArray = AnyObject[]()
+        return resultArray
+    }
+    
+    func analyzeJsonDictionary(jsonDictionary:Dictionary<String, AnyObject>, forClass objectClass:AnyClass) -> AnyObject? {
+        // 1 - Find the config object for the specified class
+        let configObjectOptional = easyJsonDatasource[NSStringFromClass(objectClass)]
+        if let configObject = configObjectOptional {
+            
+            // 2 - Json Dictionary
+            var jsonFormatedDictionary = jsonDictionary
+            if easyJsonEnvelopeFormat {
+                if let dictUnwrapped = jsonDictionary[configObject.classInfo.jsonKey]! as? Dictionary<String, AnyObject> {
+                    jsonFormatedDictionary = dictUnwrapped
+                }
+            }
+            
+            // 3a - ManagedObject
+            if NSManagedObject.isKindOfClass(class_getSuperclass(objectClass)) {
+                var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: databaseManagerSharedInstance.databaseCore.managedObjectContext) as NSManagedObject
+                
+                for parameter in configObject.parameters {
+                    
+                }
+            }
+            
+            // 3b - CustomObject
+        }
+        
+        return nil
+    }
 
 }
-
 
 
 class EasyJsonConfigDatasource {

@@ -9,3 +9,4 @@
 import Foundation
 
 let easyJsonDateFormat = "yyyy-MM-dd"
+let easyJsonEnvelopeFormat = false
