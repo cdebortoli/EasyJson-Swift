@@ -8,6 +8,8 @@
 
 import Foundation
 
+// ------ EasyJson ------
+
 class EasyJson {
     
     // Properties
@@ -19,7 +21,6 @@ class EasyJson {
         dateFormatter.dateFormat = EasyJsonConfig.dateFormat
         println("EasyJson init")
     }
-    
     
     // Analyze methods
     func analyzeJsonArray(jsonArray:AnyObject[], forClass objectClass:AnyClass) -> AnyObject[] {
@@ -59,19 +60,34 @@ class EasyJson {
 
 }
 
+
+// ------ Extensions ------
+
 extension NSManagedObject {
+    
+    // Set property value
     func setPropertyWithEasyJsonParameter(parameter:EasyJsonObject.EasyJsonParameterObject, fromJson jsonDict:Dictionary<String, AnyObject>) {
         if jsonDict[parameter.jsonKey] != nil {
             
-            if let managedObjectValue : AnyObject = getValueFromJson(jsonDict, withParameter: parameter) {
+            if let managedObjectValue : AnyObject = getValueWithEasyJsonParameter(parameter, fromJsonDictionary: jsonDict) {
                 setValue(managedObjectValue, forKey: parameter.attribute)
             }
         }
     }
     
-    func getValueFromJson(jsonDict:Dictionary<String,AnyObject>, withParameter parameter:EasyJsonObject.EasyJsonParameterObject) -> AnyObject? {
+    // Retrieve formated property value from json
+    func getValueWithEasyJsonParameter(parameter:EasyJsonObject.EasyJsonParameterObject, fromJsonDictionary jsonDict:Dictionary<String, AnyObject>) -> AnyObject? {
         
-        if let propertyDescription = self.getPropertyDescriptionForEasyJsonParameter(parameter) {
+        // Property Description
+        var propertyDescriptionOptional:NSPropertyDescription? = { [weak self] in
+            if let propertyDescription = self?.entity.propertiesByName[parameter.attribute] as? NSPropertyDescription {
+                return propertyDescription
+            }
+            return nil
+        }()
+        
+        // Get formated property value
+        if let propertyDescription = propertyDescriptionOptional {
             
             if propertyDescription is NSAttributeDescription {
                 
@@ -89,13 +105,6 @@ extension NSManagedObject {
                 }
                 
             }
-        }
-        return nil
-    }
-    
-    func getPropertyDescriptionForEasyJsonParameter(parameter: EasyJsonObject.EasyJsonParameterObject) -> NSPropertyDescription? {
-        if let propertyDescription = self.entity.propertiesByName[parameter.attribute] as? NSPropertyDescription {
-            return propertyDescription
         }
         return nil
     }
@@ -134,6 +143,8 @@ extension NSRelationshipDescription {
     }
 }
 
+
+// ------ ConfigDatasource ------
 
 class EasyJsonConfigDatasource {
     var easyJsonObjects = EasyJsonObject[]()
