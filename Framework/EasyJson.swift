@@ -41,9 +41,9 @@ class EasyJson {
                     jsonFormatedDictionary = dictUnwrapped
                 }
             }
-            
+
             // 3a - ManagedObject
-            if NSManagedObject.isKindOfClass(class_getSuperclass(objectClass)) {
+            if class_getName(NSManagedObject.classForCoder()) == class_getName(class_getSuperclass(objectClass)) {
                 var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: databaseManagerSharedInstance.databaseCore.managedObjectContext) as NSManagedObject
                 
                 for parameter in configObject.parameters {
@@ -116,6 +116,8 @@ extension NSAttributeDescription {
                 return (jsonValue as NSString).floatValue
             case .Integer16AttributeType,.Integer32AttributeType,.Integer64AttributeType:
                 return (jsonValue as NSString).integerValue
+            case .BooleanAttributeType:
+                return (jsonValue as NSString).boolValue
             default:
                 return nil
         }

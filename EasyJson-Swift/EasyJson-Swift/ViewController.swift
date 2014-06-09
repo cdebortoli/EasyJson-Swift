@@ -28,7 +28,8 @@ class ViewController: UIViewController {
         }
 
         let dict = loadService("aircraftJson")
-//        var a1:Aircraft = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as Aircraft
+        var a1:Aircraft? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
+        println(a1)
     }
 
     override func didReceiveMemoryWarning() {
