@@ -14,11 +14,12 @@ class EasyJson {
     
     // Properties
     let dateFormatter = NSDateFormatter()
-    @lazy var easyJsonDatasource = EasyJsonConfigDatasource[]()
+    @lazy var easyJsonDatasource = EasyJsonConfigDatasource()
     
     // Init
     init() {
         dateFormatter.dateFormat = easyJsonDateFormat
+        println("EasyJson init")
     }
     
     
@@ -26,9 +27,14 @@ class EasyJson {
 }
 
 
+
 class EasyJsonConfigDatasource {
     var easyJsonObjects = EasyJsonObject[]()
 
+    init() {
+        easyJsonObjects = parseConfigObjectsFromConfigFile()
+        println("EasyJsonConfigDatasource init")
+    }
     
     subscript(attributeType: String) -> EasyJsonObject? {
         get {
@@ -44,19 +50,10 @@ class EasyJsonConfigDatasource {
         }
         return nil
     }
-    
-    func readConfigFile() -> NSData? {
-        let configFilepath:String? = NSBundle.mainBundle().pathForResource("EasyJsonConfig", ofType: "json")
-        if let filepath = configFilepath {
-            var errorFilepath:NSError?
-            return NSData.dataWithContentsOfFile(filepath, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &errorFilepath)
-        }
-        return nil
-    }
 
-    func parseConfigObjectsFromData() -> EasyJsonObject[] {
+    func parseConfigObjectsFromConfigFile() -> EasyJsonObject[] {
         var configObjects = EasyJsonObject[]()
-        if let data = self.readConfigFile() {
+        if let data = readConfigFile() {
             
             let jsonArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error:nil) as NSArray
             
@@ -88,6 +85,12 @@ class EasyJsonConfigDatasource {
         return configObjects
     }
     
-    
-    
+    func readConfigFile() -> NSData? {
+        let configFilepath:String? = NSBundle.mainBundle().pathForResource("EasyJsonConfig", ofType: "json")
+        if let filepath = configFilepath {
+            var errorFilepath:NSError?
+            return NSData.dataWithContentsOfFile(filepath, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &errorFilepath)
+        }
+        return nil
+    }
 }

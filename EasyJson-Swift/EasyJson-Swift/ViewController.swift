@@ -12,10 +12,11 @@ class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        var test:EasyJsonConfigDatasource = EasyJsonConfigDatasource()
-        for object:EasyJsonObject in test.parseConfigObjectsFromData() {
+//        println(easyJsonSharedInstance.dateFormatter.dateFormat)
+//        sleep(4)
+
+        for object:EasyJsonObject in easyJsonSharedInstance.easyJsonDatasource.easyJsonObjects {
             println("------------------")
             println("Class Attribute \(object.classInfo.attribute)")
             println("Class json \(object.classInfo.jsonKey)")
