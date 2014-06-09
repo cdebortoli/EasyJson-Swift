@@ -12,11 +12,8 @@ class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        println(easyJsonSharedInstance.dateFormatter.dateFormat)
-//        sleep(4)
 
-        for object:EasyJsonObject in easyJsonSharedInstance.easyJsonDatasource.easyJsonObjects {
+        for object:EasyJsonObject in easyJsonSingleton.easyJsonSharedInstance.easyJsonDatasource.easyJsonObjects {
             println("------------------")
             println("Class Attribute \(object.classInfo.attribute)")
             println("Class json \(object.classInfo.jsonKey)")
@@ -28,7 +25,7 @@ class ViewController: UIViewController {
         }
 
         let dict = loadService("aircraftJson")
-        var a1:Aircraft? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
+        var a1:Aircraft? = easyJsonSingleton.easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
         println(a1)
     }
 

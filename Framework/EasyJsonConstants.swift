@@ -8,5 +8,9 @@
 
 import Foundation
 
-let easyJsonDateFormat = "yyyy-MM-dd"
-let easyJsonEnvelopeFormat = false
+struct EasyJsonConfig {
+    static let dateFormat = "yyyy-MM-dd"
+    static let envelopeFormat = false
+}
+
+

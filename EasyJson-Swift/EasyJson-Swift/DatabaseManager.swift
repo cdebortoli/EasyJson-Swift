@@ -8,12 +8,9 @@
 
 import Foundation
 
-var databaseManagerSharedInstance:DatabaseManager = DatabaseManager()
-
 class DatabaseManager {
     let databaseCore = DatabaseCore()
-    
-    
+
     func saveContext() {
         databaseCore.saveContext()
     }

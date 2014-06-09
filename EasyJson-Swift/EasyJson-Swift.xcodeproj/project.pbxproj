@@ -31,6 +31,10 @@
 		48AEC02E1944ECBF00A2BECE /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 48AEC02C1944ECBF00A2BECE /* Airport.m */; };
 		48AEC0311944F00E00A2BECE /* EasyJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AEC0301944F00E00A2BECE /* EasyJson.swift */; };
 		48AEC0321944F00E00A2BECE /* EasyJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AEC0301944F00E00A2BECE /* EasyJson.swift */; };
+		48F509F6194631170065DCEC /* EasyJsonSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F509F5194631170065DCEC /* EasyJsonSingleton.swift */; };
+		48F509F7194631170065DCEC /* EasyJsonSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F509F5194631170065DCEC /* EasyJsonSingleton.swift */; };
+		48F509F9194632A50065DCEC /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F509F8194632A50065DCEC /* Singleton.swift */; };
+		48F509FA194632A50065DCEC /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F509F8194632A50065DCEC /* Singleton.swift */; };
 		48FC67321945128200E94A06 /* EasyJsonConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FC67311945128200E94A06 /* EasyJsonConfig.json */; };
 		48FC67371945129900E94A06 /* aircraftJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FC67341945129900E94A06 /* aircraftJson.json */; };
 		48FC67381945129900E94A06 /* customObjectJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FC67351945129900E94A06 /* customObjectJson.json */; };
@@ -72,6 +76,8 @@
 		48AEC02B1944ECBF00A2BECE /* Airport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Airport.h; sourceTree = "<group>"; };
 		48AEC02C1944ECBF00A2BECE /* Airport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Airport.m; sourceTree = "<group>"; };
 		48AEC0301944F00E00A2BECE /* EasyJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EasyJson.swift; path = ../Framework/EasyJson.swift; sourceTree = "<group>"; };
+		48F509F5194631170065DCEC /* EasyJsonSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyJsonSingleton.swift; sourceTree = "<group>"; };
+		48F509F8194632A50065DCEC /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		48FC67311945128200E94A06 /* EasyJsonConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EasyJsonConfig.json; sourceTree = "<group>"; };
 		48FC67341945129900E94A06 /* aircraftJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = aircraftJson.json; sourceTree = "<group>"; };
 		48FC67351945129900E94A06 /* customObjectJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customObjectJson.json; sourceTree = "<group>"; };
@@ -124,6 +130,7 @@
 				48AEBFFA1944E2EF00A2BECE /* AppDelegate.swift */,
 				48AEBFFF1944E2EF00A2BECE /* ViewController.swift */,
 				48AEC0011944E2EF00A2BECE /* Main.storyboard */,
+				48F509F8194632A50065DCEC /* Singleton.swift */,
 				48AEC0041944E2EF00A2BECE /* Images.xcassets */,
 				48AEBFF81944E2EF00A2BECE /* Supporting Files */,
 			);
@@ -180,6 +187,7 @@
 				489219E31945C1FA00053A24 /* EasyJsonConstants.swift */,
 				489219E41945C1FA00053A24 /* EasyJsonObject.swift */,
 				48AEC0301944F00E00A2BECE /* EasyJson.swift */,
+				48F509F5194631170065DCEC /* EasyJsonSingleton.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -304,10 +312,12 @@
 				489219E91945C1FA00053A24 /* EasyJsonObject.swift in Sources */,
 				48AEC01C1944E3E900A2BECE /* DatabaseCore.swift in Sources */,
 				48AEC0311944F00E00A2BECE /* EasyJson.swift in Sources */,
+				48F509F9194632A50065DCEC /* Singleton.swift in Sources */,
 				48AEC01F1944EBEF00A2BECE /* DatabaseManager.swift in Sources */,
 				489219E71945C1FA00053A24 /* EasyJsonConstants.swift in Sources */,
 				48AEBFFB1944E2EF00A2BECE /* AppDelegate.swift in Sources */,
 				48AEC02D1944ECBF00A2BECE /* Airport.m in Sources */,
+				48F509F6194631170065DCEC /* EasyJsonSingleton.swift in Sources */,
 				48AEC0291944ECBF00A2BECE /* Aircraft.m in Sources */,
 				48AEBFFE1944E2EF00A2BECE /* EasyJson_Swift.xcdatamodeld in Sources */,
 			);
@@ -323,7 +333,9 @@
 				489219EA1945C1FA00053A24 /* EasyJsonObject.swift in Sources */,
 				489219E81945C1FA00053A24 /* EasyJsonConstants.swift in Sources */,
 				48AEC02E1944ECBF00A2BECE /* Airport.m in Sources */,
+				48F509FA194632A50065DCEC /* Singleton.swift in Sources */,
 				48AEC0321944F00E00A2BECE /* EasyJson.swift in Sources */,
+				48F509F7194631170065DCEC /* EasyJsonSingleton.swift in Sources */,
 				48AEC0261944ECBF00A2BECE /* Pilot.m in Sources */,
 				48AEC0201944EBEF00A2BECE /* DatabaseManager.swift in Sources */,
 			);
