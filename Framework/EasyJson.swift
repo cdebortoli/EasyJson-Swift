@@ -79,6 +79,9 @@ extension NSManagedObject {
                 
                 if let jsonString = jsonDict[parameter.jsonKey]! as? String {
                     return (propertyDescription as NSAttributeDescription).getAttributeValueForEasyJsonValue(jsonString)
+                } else if let jsonNumber = jsonDict[parameter.jsonKey]! as? NSNumber {
+                    let jsonString = "\(jsonNumber)"
+                    return (propertyDescription as NSAttributeDescription).getAttributeValueForEasyJsonValue(jsonString)
                 }
                 
             } else if propertyDescription is NSRelationshipDescription {
@@ -104,7 +107,6 @@ extension NSManagedObject {
 
 extension NSAttributeDescription {
     func getAttributeValueForEasyJsonValue(jsonValue:String) -> AnyObject? {
-        
         switch(self.attributeType){
             case .DateAttributeType:
                 return easyJsonSharedInstance.dateFormatter.dateFromString(jsonValue)
