@@ -55,7 +55,7 @@ class EasyJsonConfigDatasource {
         var configObjects = EasyJsonObject[]()
         if let data = readConfigFile() {
             
-            let jsonArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error:nil) as NSArray
+            let jsonArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error:nil) as AnyObject[]
             
             for configOccurenceOpt : AnyObject in jsonArray {
                 if let configOccurence = configOccurenceOpt as? NSDictionary {
