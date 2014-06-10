@@ -19,10 +19,10 @@ class CustomObject : EasyJsonWrapper {
     var attrDouble:Double?
     var attrBool:Bool?
     var attrArray:AnyObject[]?
-//    var attrDictionary = makeDict()
+    var attrDictionary:Dictionary<NSObject, AnyObject>?
     
-    func makeDict<T1: Hashable, T2>(key: T1, value:T2) -> Dictionary<T1,T2> {
-        return Dictionary<T1,T2>()
+    class func getClass() -> AnyClass {
+        return CustomObject.self
     }
-
 }
+

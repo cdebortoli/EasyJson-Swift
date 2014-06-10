@@ -51,10 +51,12 @@ class EasyJson {
                 return managedObject
             }
             // 3b - CustomObject
-            else if class_getName(EasyJsonWrapper) == class_getName(class_getSuperclass(objectClass)) {
-                var object : AnyObject! = objectClass.alloc()
-                println(object)
-            }
+//           var a =  class_copyProtocolList(objectClass, nil)
+            
+//            else if class_conformsToProtocol(objectClass, Hashable.self) {
+//                var object : AnyObject! = objectClass.alloc()
+//                println(object)
+//            }
         }
         
         return nil
@@ -148,9 +150,8 @@ extension NSRelationshipDescription {
 
 // ------ EasyJsonWrappingObject ------
 
-class EasyJsonWrapper {
-    
-    
+protocol EasyJsonWrapper {
+    class func getClass() -> AnyClass
 }
 
 // ------ ConfigDatasource ------
