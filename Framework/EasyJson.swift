@@ -8,8 +8,9 @@
 
 import Foundation
 
-// ------ EasyJson ------
+let easyJsonSharedInstance = EasyJson()
 
+// ------ EasyJson ------
 class EasyJson {
     
     // Properties
@@ -43,7 +44,7 @@ class EasyJson {
 
             // 3a - ManagedObject
             if class_getName(NSManagedObject.classForCoder()) == class_getName(class_getSuperclass(objectClass)) {
-                var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: singleton.databaseManagerSharedInstance.databaseCore.managedObjectContext) as NSManagedObject
+                var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: databaseManagerSharedInstance.databaseCore.managedObjectContext) as NSManagedObject
                 
                 for parameter in configObject.parameters {
                     managedObject.setPropertyWithEasyJsonParameter(parameter, fromJson: jsonFormatedDictionary)
@@ -121,7 +122,7 @@ extension NSAttributeDescription {
     func getAttributeValueForEasyJsonValue(jsonValue:String) -> AnyObject? {
         switch(self.attributeType){
             case .DateAttributeType:
-                return easyJsonSingleton.easyJsonSharedInstance.dateFormatter.dateFromString(jsonValue)
+                return easyJsonSharedInstance.dateFormatter.dateFromString(jsonValue)
             case .StringAttributeType:
                 return jsonValue
             case .DecimalAttributeType,.DoubleAttributeType:
@@ -142,7 +143,7 @@ extension NSRelationshipDescription {
     func getRelationshipValueForEasyJsonArray(jsonArray:Dictionary<String, AnyObject>[]) -> NSMutableSet {
         var relationshipSet = NSMutableSet()
         for jsonValue in jsonArray  {
-            relationshipSet.addObject(easyJsonSingleton.easyJsonSharedInstance.analyzeJsonDictionary(jsonValue, forClass: NSClassFromString(self.destinationEntity.managedObjectClassName)))
+            relationshipSet.addObject(easyJsonSharedInstance.analyzeJsonDictionary(jsonValue, forClass: NSClassFromString(self.destinationEntity.managedObjectClassName)))
         }
         return relationshipSet
     }

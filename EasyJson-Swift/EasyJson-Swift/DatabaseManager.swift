@@ -8,6 +8,8 @@
 
 import Foundation
 
+let databaseManagerSharedInstance = DatabaseManager()
+
 class DatabaseManager {
     let databaseCore = DatabaseCore()
 

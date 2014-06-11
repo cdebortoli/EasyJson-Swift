@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        for object:EasyJsonObject in easyJsonSingleton.easyJsonSharedInstance.easyJsonDatasource.easyJsonObjects {
+        for object:EasyJsonObject in easyJsonSharedInstance.easyJsonDatasource.easyJsonObjects {
             println("------------------")
             println("Class Attribute \(object.classInfo.attribute)")
             println("Class json \(object.classInfo.jsonKey)")
@@ -25,10 +25,10 @@ class ViewController: UIViewController {
         }
 
         let dict = loadService("aircraftJson")
-        var a1:Aircraft? = easyJsonSingleton.easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
+        var a1:Aircraft? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
         println(a1)
         
-       var customObject:CustomObject? = easyJsonSingleton.easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass: CustomObject.getClass()) as? CustomObject
+       var customObject:CustomObject? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass: CustomObject.getClass()) as? CustomObject
 
     }
 
