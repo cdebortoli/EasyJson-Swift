@@ -27,7 +27,7 @@
                     ]
  },
  {
-    "class" : { "attribute" : "EJSCustomObject", "json": "customObject" },
+    "class" : { "attribute" : "CustomObject", "json": "customObject" },
     "parameters" : [
                     { "attribute": "attrString", "json": "customAttrString" },
                     { "attribute": "attrDate", "json": "customAttrDate" },

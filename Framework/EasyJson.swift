@@ -32,8 +32,8 @@ class EasyJson {
     func analyzeJsonDictionary(jsonDictionary:Dictionary<String, AnyObject>, forClass objectClass:AnyClass) -> AnyObject? {
         // 1 - Find the config object for the specified class
         let configObjectOptional = easyJsonDatasource[NSStringFromClass(objectClass)]
+        
         if let configObject = configObjectOptional {
-            
             // 2 - Json Dictionary
             var jsonFormatedDictionary = jsonDictionary
             if EasyJsonConfig.envelopeFormat {
@@ -52,12 +52,11 @@ class EasyJson {
                 return managedObject
             }
             // 3b - CustomObject
-//           var a =  class_copyProtocolList(objectClass, nil)
-            
-//            else if class_conformsToProtocol(objectClass, Hashable.self) {
-//                var object : AnyObject! = objectClass.alloc()
-//                println(object)
-//            }
+//            else if(objectClass is EasyJsonWrapper) {
+            else if class_conformsToProtocol(objectClass, NSProtocolFromString("EasyJsonWrapper")) {
+                var object : AnyObject! = ClassFactory.initObjectFromClass(objectClass)
+                println(object)
+            }
         }
         
         return nil
@@ -151,7 +150,7 @@ extension NSRelationshipDescription {
 
 // ------ EasyJsonWrappingObject ------
 
-protocol EasyJsonWrapper {
+@objc(EasyJsonWrapper) protocol EasyJsonWrapper {
     class func getClass() -> AnyClass
 }
 
