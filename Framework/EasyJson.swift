@@ -32,8 +32,8 @@ class EasyJson {
     func analyzeJsonDictionary(jsonDictionary:Dictionary<String, AnyObject>, forClass objectClass:AnyClass) -> AnyObject? {
         // 1 - Find the config object for the specified class
         let configObjectOptional = easyJsonDatasource[NSStringFromClass(objectClass)]
-        
         if let configObject = configObjectOptional {
+            
             // 2 - Json Dictionary
             var jsonFormatedDictionary = jsonDictionary
             if EasyJsonConfig.envelopeFormat {
@@ -42,6 +42,7 @@ class EasyJson {
                 }
             }
 
+            // 3 - Parse & init
             switch(class_getName(class_getSuperclass(objectClass))) {
                 // 3a - ManagedObject
                 case class_getName(NSManagedObject.classForCoder()):
@@ -54,9 +55,12 @@ class EasyJson {
                 // 3b - CustomObject
                 case class_getName(EasyJsonWrapper.self):
                     var object : AnyObject! = ClassFactory.initObjectFromClass(objectClass)
-                    
-                    object.setValue("hello boy", forKey: "attrString")
-                    println(object.valueForKey("attrString"))
+                
+                    for parameter in configObject.parameters {
+                        object.setParametersWith(parameter, fromJson: jsonFormatedDictionary)
+                    }
+//                    object.setValue("hello boy", forKey: "attrString")
+//                    println(object.valueForKey("attrString"))
                 
                 default:
                     return nil
@@ -70,7 +74,26 @@ class EasyJson {
 
 }
 
-@objc(EasyJsonWrapper) class EasyJsonWrapper : NSObject {}
+
+@objc(EasyJsonWrapper) class EasyJsonWrapper : NSObject {
+    
+    func setParametersWith(parameterObject:AnyObject, fromJson jsonDict:Dictionary<String, AnyObject>)
+    {
+        if let parameter = parameterObject as? EasyJsonObject.EasyJsonParameterObject {
+            if jsonDict[parameter.jsonKey] != nil {
+            
+                if let objectValue : AnyObject = getValueWith(parameter, fromJson: jsonDict) {
+//                    setValue(objectValue, forKey: parameter.attribute)
+                }
+            }
+        }
+    }
+
+    func getValueWith(parameterObject:AnyObject, fromJson jsonDict:Dictionary<String, AnyObject>) -> AnyObject? {
+     return nil
+    }
+}
+
 
 
 // ------ Extensions ------
