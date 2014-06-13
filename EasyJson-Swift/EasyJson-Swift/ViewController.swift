@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        EasyJsonConfig.managedObjectContext = databaseManagerSharedInstance.databaseCore.managedObjectContext
         for object:EasyJsonObject in easyJsonSharedInstance.easyJsonDatasource.easyJsonObjects {
             println("------------------")
             println("Class Attribute \(object.classInfo.attribute)")
@@ -28,7 +29,6 @@ class ViewController: UIViewController {
         var a1:Aircraft? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
         println(a1)
         
-        println("++ ++ ++ ++\(CustomObject.self)")
        var customObject:CustomObject? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass: CustomObject.self) as? CustomObject
 
     }

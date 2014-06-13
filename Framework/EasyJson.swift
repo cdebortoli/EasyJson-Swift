@@ -45,7 +45,7 @@ class EasyJson {
             switch(class_getName(class_getSuperclass(objectClass))) {
                 // 3a - ManagedObject
                 case class_getName(NSManagedObject.classForCoder()):
-                    var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: databaseManagerSharedInstance.databaseCore.managedObjectContext) as NSManagedObject
+                    var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: EasyJsonConfig.managedObjectContext!) as NSManagedObject
                     
                     for parameter in configObject.parameters {
                         managedObject.setPropertyWithEasyJsonParameter(parameter, fromJson: jsonFormatedDictionary)
