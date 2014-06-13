@@ -28,7 +28,8 @@ class ViewController: UIViewController {
         var a1:Aircraft? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
         println(a1)
         
-       var customObject:CustomObject? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass: CustomObject.getClass()) as? CustomObject
+        println("++ ++ ++ ++\(CustomObject.self)")
+       var customObject:CustomObject? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass: CustomObject.self) as? CustomObject
 
     }
 

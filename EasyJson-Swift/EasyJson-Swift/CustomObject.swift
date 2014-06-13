@@ -9,8 +9,9 @@
 import Foundation
 
 
-@objc(CustomObject) class CustomObject : NSObject, EasyJsonWrapper {
-//class CustomObject : NSObject, EasyJsonWrapper {
+
+
+@objc(CustomObject) class CustomObject : EasyJsonWrapper {
 
     var attrString:String?
     var attrDate:NSDate?
@@ -24,13 +25,5 @@ import Foundation
     var attrArray:AnyObject[]?
     var attrDictionary:Dictionary<NSObject, AnyObject>?
     
-//    @required init()
-//    {
-//        
-//    }
-    class func getClass() -> AnyClass {
-        return CustomObject.self
-    }
    
 }
-

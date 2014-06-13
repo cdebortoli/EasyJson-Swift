@@ -42,21 +42,26 @@ class EasyJson {
                 }
             }
 
-            // 3a - ManagedObject
-            if class_getName(NSManagedObject.classForCoder()) == class_getName(class_getSuperclass(objectClass)) {
-                var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: databaseManagerSharedInstance.databaseCore.managedObjectContext) as NSManagedObject
+            switch(class_getName(class_getSuperclass(objectClass))) {
+                // 3a - ManagedObject
+                case class_getName(NSManagedObject.classForCoder()):
+                    var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: databaseManagerSharedInstance.databaseCore.managedObjectContext) as NSManagedObject
+                    
+                    for parameter in configObject.parameters {
+                        managedObject.setPropertyWithEasyJsonParameter(parameter, fromJson: jsonFormatedDictionary)
+                    }
+                    return managedObject
+                // 3b - CustomObject
+                case class_getName(EasyJsonWrapper.self):
+                    var object : AnyObject! = ClassFactory.initObjectFromClass(objectClass)
+                    
+                    object.setValue("hello boy", forKey: "attrString")
+                    println(object.valueForKey("attrString"))
                 
-                for parameter in configObject.parameters {
-                    managedObject.setPropertyWithEasyJsonParameter(parameter, fromJson: jsonFormatedDictionary)
-                }
-                return managedObject
+                default:
+                    return nil
             }
-            // 3b - CustomObject
-//            else if(objectClass is EasyJsonWrapper) {
-            else if class_conformsToProtocol(objectClass, NSProtocolFromString("EasyJsonWrapper")) {
-                var object : AnyObject! = ClassFactory.initObjectFromClass(objectClass)
-                println(object)
-            }
+
         }
         
         return nil
@@ -64,6 +69,8 @@ class EasyJson {
     
 
 }
+
+@objc(EasyJsonWrapper) class EasyJsonWrapper : NSObject {}
 
 
 // ------ Extensions ------
@@ -148,11 +155,6 @@ extension NSRelationshipDescription {
     }
 }
 
-// ------ EasyJsonWrappingObject ------
-
-@objc(EasyJsonWrapper) protocol EasyJsonWrapper {
-    class func getClass() -> AnyClass
-}
 
 // ------ ConfigDatasource ------
 
