@@ -37,12 +37,13 @@ class EasyJson {
             
             // 2 - Json Dictionary
             var jsonFormatedDictionary = jsonDictionary
+            // Envelope
             if EasyJsonConfig.envelopeFormat {
                 if let dictUnwrapped = jsonDictionary[configObject.classInfo.jsonKey]! as? Dictionary<String, AnyObject> {
                     jsonFormatedDictionary = dictUnwrapped
                 }
             }
-
+            
             // 3 - Parse & init
             switch(class_getName(class_getSuperclass(objectClass))) {
                 // 3a - ManagedObject
@@ -55,10 +56,11 @@ class EasyJson {
                     return managedObject
                 // 3b - CustomObject
                 case class_getName(EasyJsonWrapper.self):
-                    var object : AnyObject! = ClassFactory.initObjectFromClass(objectClass)
+                    var cobject : AnyObject! = ClassFactory.initObjectFromClass(objectClass)
+                    (cobject as EasyJsonWrapper).childrenClassReference = objectClass
                     
                     for parameter in configObject.parameters {
-                        object.setParametersWith(parameter, fromJson: jsonFormatedDictionary)
+                        cobject.setParametersWith(parameter, fromJson: jsonFormatedDictionary)
                     }
 //                    object.setValue("hello boy", forKey: "attrString")
 //                    println(object.valueForKey("attrString"))
@@ -78,11 +80,15 @@ class EasyJson {
 
 @objc(EasyJsonWrapper) class EasyJsonWrapper : NSObject {
     
+    var childrenClassReference:AnyClass?
+    
     func setParametersWith(parameterObject:AnyObject, fromJson jsonDict:Dictionary<String, AnyObject>)
     {
         if let parameter = parameterObject as? EasyJsonObject.EasyJsonParameterObject {
-            if jsonDict[parameter.jsonKey] != nil {
             
+            println("Set Parameter \(parameter.jsonKey)")
+            if jsonDict[parameter.jsonKey] != nil {
+                println("Found in json")
                 if let objectValue : AnyObject = getValueWith(parameter, fromJson: jsonDict) {
 //                    setValue(objectValue, forKey: parameter.attribute)
                 }
@@ -90,11 +96,46 @@ class EasyJson {
         }
     }
 
-    func getValueWith(parameterObject:AnyObject, fromJson jsonDict:Dictionary<String, AnyObject>) -> AnyObject? {
+    func getValueWith(parameter:EasyJsonObject.EasyJsonParameterObject, fromJson jsonDict:Dictionary<String, AnyObject>) -> AnyObject? {
+     
+        var propertyOptional:objc_property_t? = nil
+        if let childrenClass:AnyClass = childrenClassReference {
+            propertyOptional = class_getProperty(childrenClass, parameter.attribute.bridgeToObjectiveC().UTF8String)
+        }
+
+        if let property = propertyOptional {
+//            var x = property_getAttributes(property)
+//            let propertyType = String.fromCString(property_getAttributes(property))
+//            let propertyKey = String.fromCString(property_getName(property))
+//            
+//            let jsonStringOptional = jsonDict[parameter.jsonKey]! as? String
+//            if let jsonString = jsonStringOptional {
+//                switch(propertyType.substringFromIndex(1)) {
+//                case "f":
+//                    println("\(propertyKey) is f")
+//                    return nil
+//                case "i":
+//                    println("\(propertyKey) is i")
+//                    return nil
+//                case "d":
+//                    println("\(propertyKey) is d")
+//                    return nil
+//                case "c":
+//                    println("\(propertyKey) is c")
+//                    return nil
+//                case "@":
+//                    println("\(propertyKey) is @")
+//                    return nil
+//                default:
+//                    return nil
+//                }
+//            }
+        }
+        
+        
      return nil
     }
 }
-
 
 
 // ------ Extensions ------

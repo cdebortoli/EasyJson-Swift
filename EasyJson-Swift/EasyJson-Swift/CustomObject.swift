@@ -23,5 +23,4 @@ import EasyJsonFramework
     var attrArray:AnyObject[]?
     var attrDictionary:Dictionary<NSObject, AnyObject>?
     
-   
 }

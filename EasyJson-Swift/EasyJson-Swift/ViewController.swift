@@ -15,22 +15,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         EasyJsonConfig.managedObjectContext = databaseManagerSharedInstance.databaseCore.managedObjectContext
-        for object:EasyJsonObject in easyJsonSharedInstance.easyJsonDatasource.easyJsonObjects {
-            println("------------------")
-            println("Class Attribute \(object.classInfo.attribute)")
-            println("Class json \(object.classInfo.jsonKey)")
-            for parameter:EasyJsonObject.EasyJsonParameterObject in object.parameters {
-                println("Parameter attribute \(parameter.attribute)")
-                println("Parameter json \(parameter.jsonKey)")
-                println("Parameter Type \(parameter.objectType)")
-            }
-        }
+//        for object:EasyJsonObject in easyJsonSharedInstance.easyJsonDatasource.easyJsonObjects {
+//            println("------------------")
+//            println("Class Attribute \(object.classInfo.attribute)")
+//            println("Class json \(object.classInfo.jsonKey)")
+//            for parameter:EasyJsonObject.EasyJsonParameterObject in object.parameters {
+//                println("Parameter attribute \(parameter.attribute)")
+//                println("Parameter json \(parameter.jsonKey)")
+//                println("Parameter Type \(parameter.objectType)")
+//            }
+//        }
 
         let dict = loadService("aircraftJson")
         var a1:Aircraft? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
-        println(a1)
+//        println(a1)
         
-       var customObject:CustomObject? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass: CustomObject.self) as? CustomObject
+        let customObjectDict = loadService("customObjectJson")
+       var customObject:CustomObject? = easyJsonSharedInstance.analyzeJsonDictionary(customObjectDict, forClass: CustomObject.self) as? CustomObject
 
     }
 
