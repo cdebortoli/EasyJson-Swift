@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import EasyJsonFramework
 
 class EasyJson_SwiftTests: XCTestCase {
     
@@ -22,6 +23,7 @@ class EasyJson_SwiftTests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
+        
         XCTAssert(true, "Pass")
     }
     

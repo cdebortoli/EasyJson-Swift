@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480540B8194CE0A50077777F /* EasyJsonMockAircraft.json in Resources */ = {isa = PBXBuildFile; fileRef = 480540B4194CE0A50077777F /* EasyJsonMockAircraft.json */; };
+		480540B9194CE0A50077777F /* EasyJsonMockAircraftWithEnvelope.json in Resources */ = {isa = PBXBuildFile; fileRef = 480540B5194CE0A50077777F /* EasyJsonMockAircraftWithEnvelope.json */; };
+		480540BA194CE0A50077777F /* EasyJsonMockCustomObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 480540B6194CE0A50077777F /* EasyJsonMockCustomObject.json */; };
+		480540BB194CE0A50077777F /* EasyJsonMockCustomObjects.json in Resources */ = {isa = PBXBuildFile; fileRef = 480540B7194CE0A50077777F /* EasyJsonMockCustomObjects.json */; };
+		480540C3194CE7A60077777F /* EasyJsonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4A1AA194C58EC00F71E1F /* EasyJsonFramework.framework */; };
 		48AEBFFB1944E2EF00A2BECE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AEBFFA1944E2EF00A2BECE /* AppDelegate.swift */; };
 		48AEBFFE1944E2EF00A2BECE /* EasyJson_Swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48AEBFFC1944E2EF00A2BECE /* EasyJson_Swift.xcdatamodeld */; };
 		48AEC0001944E2EF00A2BECE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AEBFFF1944E2EF00A2BECE /* ViewController.swift */; };
@@ -32,6 +37,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		480540BD194CE79C0077777F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48AEBFED1944E2EF00A2BECE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48AEBFF41944E2EF00A2BECE;
+			remoteInfo = "EasyJson-Swift";
+		};
+		480540C1194CE7A30077777F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48AEBFED1944E2EF00A2BECE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48AEBFF41944E2EF00A2BECE;
+			remoteInfo = "EasyJson-Swift";
+		};
 		48AEC00B1944E2EF00A2BECE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48AEBFED1944E2EF00A2BECE /* Project object */;
@@ -56,6 +75,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		480540B4194CE0A50077777F /* EasyJsonMockAircraft.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EasyJsonMockAircraft.json; sourceTree = "<group>"; };
+		480540B5194CE0A50077777F /* EasyJsonMockAircraftWithEnvelope.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EasyJsonMockAircraftWithEnvelope.json; sourceTree = "<group>"; };
+		480540B6194CE0A50077777F /* EasyJsonMockCustomObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EasyJsonMockCustomObject.json; sourceTree = "<group>"; };
+		480540B7194CE0A50077777F /* EasyJsonMockCustomObjects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EasyJsonMockCustomObjects.json; sourceTree = "<group>"; };
 		48AEBFF51944E2EF00A2BECE /* EasyJson-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EasyJson-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48AEBFF91944E2EF00A2BECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48AEBFFA1944E2EF00A2BECE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,12 +120,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480540C3194CE7A60077777F /* EasyJsonFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		480540B1194CE0860077777F /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				480540B4194CE0A50077777F /* EasyJsonMockAircraft.json */,
+				480540B5194CE0A50077777F /* EasyJsonMockAircraftWithEnvelope.json */,
+				480540B6194CE0A50077777F /* EasyJsonMockCustomObject.json */,
+				480540B7194CE0A50077777F /* EasyJsonMockCustomObjects.json */,
+			);
+			name = Mocks;
+			sourceTree = "<group>";
+		};
 		48AEBFEC1944E2EF00A2BECE = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +186,7 @@
 		48AEC00D1944E2EF00A2BECE /* EasyJson-SwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				480540B1194CE0860077777F /* Mocks */,
 				48AEC0101944E2EF00A2BECE /* EasyJson_SwiftTests.swift */,
 				48AEC00E1944E2EF00A2BECE /* Supporting Files */,
 			);
@@ -232,6 +268,8 @@
 			);
 			dependencies = (
 				48AEC00C1944E2EF00A2BECE /* PBXTargetDependency */,
+				480540BE194CE79C0077777F /* PBXTargetDependency */,
+				480540C2194CE7A30077777F /* PBXTargetDependency */,
 			);
 			name = "EasyJson-SwiftTests";
 			productName = "EasyJson-SwiftTests";
@@ -316,6 +354,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480540B8194CE0A50077777F /* EasyJsonMockAircraft.json in Resources */,
+				480540BB194CE0A50077777F /* EasyJsonMockCustomObjects.json in Resources */,
+				480540B9194CE0A50077777F /* EasyJsonMockAircraftWithEnvelope.json in Resources */,
+				480540BA194CE0A50077777F /* EasyJsonMockCustomObject.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +396,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		480540BE194CE79C0077777F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48AEBFF41944E2EF00A2BECE /* EasyJson-Swift */;
+			targetProxy = 480540BD194CE79C0077777F /* PBXContainerItemProxy */;
+		};
+		480540C2194CE7A30077777F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48AEBFF41944E2EF00A2BECE /* EasyJson-Swift */;
+			targetProxy = 480540C1194CE7A30077777F /* PBXContainerItemProxy */;
+		};
 		48AEC00C1944E2EF00A2BECE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 48AEBFF41944E2EF00A2BECE /* EasyJson-Swift */;
