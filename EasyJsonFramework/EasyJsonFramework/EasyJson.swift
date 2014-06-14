@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 let easyJsonSharedInstance = EasyJson()
 
@@ -55,7 +56,7 @@ class EasyJson {
                 // 3b - CustomObject
                 case class_getName(EasyJsonWrapper.self):
                     var object : AnyObject! = ClassFactory.initObjectFromClass(objectClass)
-                
+                    
                     for parameter in configObject.parameters {
                         object.setParametersWith(parameter, fromJson: jsonFormatedDictionary)
                     }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct EasyJsonConfig {
     static let dateFormat = "yyyy-MM-dd"

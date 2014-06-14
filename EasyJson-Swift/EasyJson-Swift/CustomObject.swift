@@ -7,9 +7,7 @@
 //
 
 import Foundation
-
-
-
+import EasyJsonFramework
 
 @objc(CustomObject) class CustomObject : EasyJsonWrapper {
 

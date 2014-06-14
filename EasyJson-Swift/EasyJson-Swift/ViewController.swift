@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import EasyJsonFramework
 
 class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         EasyJsonConfig.managedObjectContext = databaseManagerSharedInstance.databaseCore.managedObjectContext
         for object:EasyJsonObject in easyJsonSharedInstance.easyJsonDatasource.easyJsonObjects {
             println("------------------")
