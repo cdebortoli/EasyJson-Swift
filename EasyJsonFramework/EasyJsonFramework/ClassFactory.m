@@ -19,4 +19,10 @@
     return [[classObject alloc] init];
 }
 
++ (objc_property_t)getPropertyFor:(Class)objectClass andPropertyName:(NSString *)propertyName
+{
+    objc_property_t propertyResult = nil;
+    propertyResult = class_getProperty(objectClass, [propertyName UTF8String]);
+    return propertyResult;
+}
 @end
