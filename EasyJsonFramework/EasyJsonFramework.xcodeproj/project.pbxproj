@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480540CD194CE9A60077777F /* EasyJsonTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480540CC194CE9A60077777F /* EasyJsonTestHelper.swift */; };
 		48F4A143194C4A8300F71E1F /* EasyJsonFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 48F4A142194C4A8300F71E1F /* EasyJsonFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48F4A149194C4A8300F71E1F /* EasyJsonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4A13D194C4A8300F71E1F /* EasyJsonFramework.framework */; };
 		48F4A150194C4A8300F71E1F /* EasyJsonFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F4A14F194C4A8300F71E1F /* EasyJsonFrameworkTests.swift */; };
@@ -27,6 +28,20 @@
 			remoteGlobalIDString = 48F4A13C194C4A8300F71E1F;
 			remoteInfo = EasyJsonFramework;
 		};
+		480540C6194CE7D60077777F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48F4A134194C4A8300F71E1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48F4A13C194C4A8300F71E1F;
+			remoteInfo = EasyJsonFramework;
+		};
+		480540C8194CE7DD0077777F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48F4A134194C4A8300F71E1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48F4A13C194C4A8300F71E1F;
+			remoteInfo = EasyJsonFramework;
+		};
 		48F4A14A194C4A8300F71E1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48F4A134194C4A8300F71E1F /* Project object */;
@@ -37,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		480540CC194CE9A60077777F /* EasyJsonTestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyJsonTestHelper.swift; sourceTree = "<group>"; };
 		48F4A13D194C4A8300F71E1F /* EasyJsonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyJsonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F4A141194C4A8300F71E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F4A142194C4A8300F71E1F /* EasyJsonFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyJsonFramework.h; sourceTree = "<group>"; };
@@ -94,10 +110,11 @@
 		48F4A13F194C4A8300F71E1F /* EasyJsonFramework */ = {
 			isa = PBXGroup;
 			children = (
+				48F4A142194C4A8300F71E1F /* EasyJsonFramework.h */,
 				48F4A163194C4AD100F71E1F /* EasyJson.swift */,
 				48F4A164194C4AD100F71E1F /* EasyJsonObject.swift */,
+				480540CC194CE9A60077777F /* EasyJsonTestHelper.swift */,
 				48F4A159194C4A9900F71E1F /* Config */,
-				48F4A142194C4A8300F71E1F /* EasyJsonFramework.h */,
 				48F4A140194C4A8300F71E1F /* Supporting Files */,
 			);
 			path = EasyJsonFramework;
@@ -185,6 +202,8 @@
 			dependencies = (
 				48F4A14B194C4A8300F71E1F /* PBXTargetDependency */,
 				480540C5194CE7D60077777F /* PBXTargetDependency */,
+				480540C7194CE7D60077777F /* PBXTargetDependency */,
+				480540C9194CE7DD0077777F /* PBXTargetDependency */,
 			);
 			name = EasyJsonFrameworkTests;
 			productName = EasyJsonFrameworkTests;
@@ -250,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480540CD194CE9A60077777F /* EasyJsonTestHelper.swift in Sources */,
 				48F4A165194C4AD100F71E1F /* EasyJson.swift in Sources */,
 				48F4A160194C4AC300F71E1F /* ClassFactory.m in Sources */,
 				48F4A166194C4AD100F71E1F /* EasyJsonObject.swift in Sources */,
@@ -272,6 +292,16 @@
 			isa = PBXTargetDependency;
 			target = 48F4A13C194C4A8300F71E1F /* EasyJsonFramework */;
 			targetProxy = 480540C4194CE7D60077777F /* PBXContainerItemProxy */;
+		};
+		480540C7194CE7D60077777F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48F4A13C194C4A8300F71E1F /* EasyJsonFramework */;
+			targetProxy = 480540C6194CE7D60077777F /* PBXContainerItemProxy */;
+		};
+		480540C9194CE7DD0077777F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48F4A13C194C4A8300F71E1F /* EasyJsonFramework */;
+			targetProxy = 480540C8194CE7DD0077777F /* PBXContainerItemProxy */;
 		};
 		48F4A14B194C4A8300F71E1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

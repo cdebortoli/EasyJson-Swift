@@ -1,5 +1,5 @@
 {
-    "class": "EJSCustomObject",
+    "class": "CustomObject",
     "mock":
     {
         "customAttrString": "dfdsds",
