@@ -15,33 +15,32 @@ class EasyJsonTestHelper {
     // Return NSManagedObject and EasyJsonWrap object with data loaded from json mocks
     class func getObjectParsed(bundle:NSBundle) -> AnyObject[] {
         var objectsParsed = AnyObject[]()
-        
         for mockFilepath in self.getMockJson(bundle) {
-            
+
             // Mock Data
             var errorData:NSError?
             let mockData = NSData.dataWithContentsOfFile(mockFilepath, options: nil, error: &errorData)
-            
             if errorData == nil {
             
                 // Mock Json
                 var errorJson:NSError?
                 let jsonDictionary = NSJSONSerialization.JSONObjectWithData(mockData, options: NSJSONReadingOptions.MutableContainers, error: &errorJson) as Dictionary<String, AnyObject>
-                // Start parsing
                 if errorJson == nil {
                     
                     let mockJson:AnyObject = jsonDictionary["mock"]!
                     let mockClassStrOptional = jsonDictionary["class"]! as? String
                     let mockClass:AnyClass = NSClassFromString(mockClassStrOptional!)
-
+                    
+                    // Dictionary
                     if (mockJson is Dictionary<String, AnyObject>) {
                         var objectOptional:AnyObject? = easyJsonSharedInstance.analyzeJsonDictionary(mockJson as Dictionary<String, AnyObject>, forClass:mockClass)
                         if let object : AnyObject = objectOptional {
                             objectsParsed += object
                         }
+                    // Array
                     } else if (mockJson is AnyObject[]) {
-                        var managedObjects = easyJsonSharedInstance.analyzeJsonArray(mockJson as AnyObject[], forClass: mockClass)
-                        objectsParsed += managedObjects
+                        var objects = easyJsonSharedInstance.analyzeJsonArray(mockJson as AnyObject[], forClass: mockClass)
+                        objectsParsed += objects
                     }
                 }
                 
@@ -52,9 +51,16 @@ class EasyJsonTestHelper {
     
     // For the specified managed objects, completion closure called with an array of tuple
     // Tuple = Value parsed if exist, and attribute name
-    class func testManagedObjects(managedObjects:NSManagedObject[], completion: ((attributeValue:AnyObject?, attributeName:String)[]) -> ())
+    class func testParsedObjects(objects:AnyObject[], completion: ((attributeValue:AnyObject?, attributeName:String)[]) -> ())
     {
-        
+        for object:AnyObject in objects {
+            if NSStringFromClass(object.superclass()) == NSStringFromClass(NSManagedObject.classForCoder()) {
+
+//                completion([(attributeValue:"tmp",attributeName:"tmp")])
+            } else if NSStringFromClass(object.superclass()) == NSStringFromClass(EasyJsonWrapper.classForCoder()) {
+//                TODO When SWIFT will manage get property of optionals
+            }
+        }
     }
     
     // Search the mock files

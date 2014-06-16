@@ -35,12 +35,17 @@ class EasyJson_SwiftTests: XCTestCase {
     }
     
     func testEasyJson() {
-        let bundleTest = NSBundle(forClass: self.classForCoder)
-        var parsedObjects = EasyJsonTestHelper.getObjectParsed(bundleTest)
+//        for parsedObject : AnyObject in EasyJsonTestHelper.getObjectParsed(NSBundle(forClass: self.classForCoder)) {
+//            println("--------\(parsedObject)")
+//            
+//        }
         
-        for parsedObject : AnyObject in parsedObjects {
-            println("--------\(parsedObject)")
-        }
+        let parsedObjects = EasyJsonTestHelper.getObjectParsed(NSBundle(forClass: self.classForCoder))
+        EasyJsonTestHelper.testParsedObjects(parsedObjects, {(completion:(attributeValue: AnyObject?, attributeName: String)[]) -> () in
+           println("Test \(completion[0].attributeName) \(completion[0].attributeValue)")
+        })
+        
+        
     }
     
 }
