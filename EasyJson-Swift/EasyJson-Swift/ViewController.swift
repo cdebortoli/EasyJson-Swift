@@ -28,7 +28,7 @@ class ViewController: UIViewController {
 
         let dict = loadService("aircraftJson")
         var a1:Aircraft? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
-//        println(a1)
+        println(a1)
         
         let customObjectDict = loadService("customObjectJson")
        var customObject:CustomObject? = easyJsonSharedInstance.analyzeJsonDictionary(customObjectDict, forClass: CustomObject.self) as? CustomObject

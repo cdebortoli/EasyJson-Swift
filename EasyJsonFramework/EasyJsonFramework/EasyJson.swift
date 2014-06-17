@@ -45,32 +45,23 @@ class EasyJson {
             }
             
             // 3 - Parse & init
-            switch(class_getName(class_getSuperclass(objectClass))) {
-                // 3a - ManagedObject
-                case class_getName(NSManagedObject.classForCoder()):
-                    var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: EasyJsonConfig.managedObjectContext!) as NSManagedObject
+            if class_getSuperclass(objectClass) is NSManagedObject.Type {
+                var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: EasyJsonConfig.managedObjectContext!) as NSManagedObject
                     
-                    for parameter in configObject.parameters {
-                        managedObject.setPropertyWithEasyJsonParameter(parameter, fromJson: jsonFormatedDictionary)
-                    }
-                    return managedObject
-                // 3b - CustomObject
-                case class_getName(EasyJsonWrapper.self):
-                    var cobject : AnyObject! = ClassFactory.initObjectFromClass(objectClass)
-                    (cobject as EasyJsonWrapper).childrenClassReference = objectClass
+                for parameter in configObject.parameters {
+                    managedObject.setPropertyWithEasyJsonParameter(parameter, fromJson: jsonFormatedDictionary)
+                }
+                return managedObject
+            // 3b - CustomObject
+            } else if class_getSuperclass(objectClass) is EasyJsonWrapper.Type {
+                var cobject : AnyObject! = ClassFactory.initObjectFromClass(objectClass)
+                (cobject as EasyJsonWrapper).childrenClassReference = objectClass
                     
-                    for parameter in configObject.parameters {
-                        cobject.setParametersWith(parameter, fromJson: jsonFormatedDictionary)
-                    }
-//                    object.setValue("hello boy", forKey: "attrString")
-//                    println(object.valueForKey("attrString"))
-                
-                default:
-                    return nil
+                for parameter in configObject.parameters {
+                    cobject.setParametersWith(parameter, fromJson: jsonFormatedDictionary)
+                }
             }
-
         }
-        
         return nil
     }
     
@@ -151,16 +142,19 @@ extension NSManagedObject {
         }
     }
     
+    // Get NSPropertyDescription
+    func getPropertyDescription(parameter:EasyJsonObject.EasyJsonParameterObject) -> NSPropertyDescription? {
+        if let propertyDescription = self.entity.propertiesByName[parameter.attribute] as? NSPropertyDescription {
+            return propertyDescription
+        }
+        return nil
+    }
+    
     // Retrieve formated property value from json
     func getValueWithEasyJsonParameter(parameter:EasyJsonObject.EasyJsonParameterObject, fromJsonDictionary jsonDict:Dictionary<String, AnyObject>) -> AnyObject? {
         
         // Property Description
-        var propertyDescriptionOptional:NSPropertyDescription? = { [weak self] in
-            if let propertyDescription = self?.entity.propertiesByName[parameter.attribute] as? NSPropertyDescription {
-                return propertyDescription
-            }
-            return nil
-        }()
+        var propertyDescriptionOptional = getPropertyDescription(parameter) as NSPropertyDescription?
         
         // Get formated property value
         if let propertyDescription = propertyDescriptionOptional {

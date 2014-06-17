@@ -10,6 +10,5 @@
 @interface ClassFactory:NSObject
 
 + (id)initObjectFromClass:(Class)classObject;
-+ (objc_property_t)getPropertyFor:(Class)objectClass andPropertyName:(NSString *)propertyName;
 
 @end

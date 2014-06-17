@@ -53,14 +53,33 @@ class EasyJsonTestHelper {
     // Tuple = Value parsed if exist, and attribute name
     class func testParsedObjects(objects:AnyObject[], completion: ((attributeValue:AnyObject?, attributeName:String)[]) -> ())
     {
+        var completionArray:(attributeValue:AnyObject?, attributeName:String)[] = []
+        
         for object:AnyObject in objects {
-            if NSStringFromClass(object.superclass()) == NSStringFromClass(NSManagedObject.classForCoder()) {
-
-//                completion([(attributeValue:"tmp",attributeName:"tmp")])
-            } else if NSStringFromClass(object.superclass()) == NSStringFromClass(EasyJsonWrapper.classForCoder()) {
-//                TODO When SWIFT will manage get property of optionals
+            // NSManagedObject
+            if object.superclass() is NSManagedObject.Type {
+                
+                if let configObject = easyJsonSharedInstance.easyJsonDatasource[NSStringFromClass(object.classForCoder)] {
+                    for parameter in configObject.parameters {
+                
+                        if let objectProperty = (object as NSManagedObject).getPropertyDescription(parameter) {
+                            var completionTuple:(attributeValue:AnyObject?, attributeName:String)
+                            completionTuple.attributeValue = nil
+                            if let valueObject:AnyObject = (object as? NSManagedObject)?.valueForKey(parameter.attribute) {
+                                completionTuple.attributeValue = valueObject
+                            }
+                            completionTuple.attributeName = parameter.attribute
+                            completionArray += completionTuple
+                        }
+                        
+                    }
+                }
+            // EasyJsonWrapper
+            } else if object.superclass() is EasyJsonWrapper.Type {
+                //                TODO When SWIFT will manage get property of optionals
             }
         }
+        completion(completionArray)
     }
     
     // Search the mock files

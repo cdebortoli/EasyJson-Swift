@@ -35,14 +35,17 @@ class EasyJson_SwiftTests: XCTestCase {
     }
     
     func testEasyJson() {
-//        for parsedObject : AnyObject in EasyJsonTestHelper.getObjectParsed(NSBundle(forClass: self.classForCoder)) {
-//            println("--------\(parsedObject)")
-//            
-//        }
-        
         let parsedObjects = EasyJsonTestHelper.getObjectParsed(NSBundle(forClass: self.classForCoder))
         EasyJsonTestHelper.testParsedObjects(parsedObjects, {(completion:(attributeValue: AnyObject?, attributeName: String)[]) -> () in
-           println("Test \(completion[0].attributeName) \(completion[0].attributeValue)")
+            for (attributeValue: AnyObject?, attributeName: String) in completion {
+                println("***Test \(attributeName) \(attributeValue)")
+                if attributeValue is NSSet {
+                    XCTAssert((attributeValue as NSSet).count > 0, "Check relation : \(attributeName)")
+                } else {
+                    XCTAssertNotNil(attributeValue, "Check attributeKey : \(attributeName)")
+                }
+
+            }
         })
         
         
