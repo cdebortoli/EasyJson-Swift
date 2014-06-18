@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		480540CD194CE9A60077777F /* EasyJsonTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480540CC194CE9A60077777F /* EasyJsonTestHelper.swift */; };
+		488743091952239A00CAB6E4 /* EasyJsonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488743081952239A00CAB6E4 /* EasyJsonExtension.swift */; };
+		4887430A1952239A00CAB6E4 /* EasyJsonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488743081952239A00CAB6E4 /* EasyJsonExtension.swift */; };
+		4887430C195224D100CAB6E4 /* EasyJsonWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887430B195224D100CAB6E4 /* EasyJsonWrapper.swift */; };
+		4887430D195224D100CAB6E4 /* EasyJsonWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887430B195224D100CAB6E4 /* EasyJsonWrapper.swift */; };
+		4887430F1952257600CAB6E4 /* EasyJsonConfigDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887430E1952257600CAB6E4 /* EasyJsonConfigDatasource.swift */; };
+		488743101952257600CAB6E4 /* EasyJsonConfigDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887430E1952257600CAB6E4 /* EasyJsonConfigDatasource.swift */; };
 		48F4A143194C4A8300F71E1F /* EasyJsonFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 48F4A142194C4A8300F71E1F /* EasyJsonFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48F4A149194C4A8300F71E1F /* EasyJsonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4A13D194C4A8300F71E1F /* EasyJsonFramework.framework */; };
 		48F4A150194C4A8300F71E1F /* EasyJsonFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F4A14F194C4A8300F71E1F /* EasyJsonFrameworkTests.swift */; };
-		48F4A15F194C4AC300F71E1F /* ClassFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 48F4A15B194C4AC300F71E1F /* ClassFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		48F4A160194C4AC300F71E1F /* ClassFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F4A15C194C4AC300F71E1F /* ClassFactory.m */; };
+		48F4A15F194C4AC300F71E1F /* EasyJsonClassFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 48F4A15B194C4AC300F71E1F /* EasyJsonClassFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48F4A160194C4AC300F71E1F /* EasyJsonClassFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F4A15C194C4AC300F71E1F /* EasyJsonClassFactory.m */; };
 		48F4A161194C4AC300F71E1F /* EasyJsonConfig.json.tpl in Resources */ = {isa = PBXBuildFile; fileRef = 48F4A15D194C4AC300F71E1F /* EasyJsonConfig.json.tpl */; };
 		48F4A162194C4AC300F71E1F /* EasyJsonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F4A15E194C4AC300F71E1F /* EasyJsonConstants.swift */; };
 		48F4A165194C4AD100F71E1F /* EasyJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F4A163194C4AD100F71E1F /* EasyJson.swift */; };
@@ -53,14 +59,17 @@
 
 /* Begin PBXFileReference section */
 		480540CC194CE9A60077777F /* EasyJsonTestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyJsonTestHelper.swift; sourceTree = "<group>"; };
+		488743081952239A00CAB6E4 /* EasyJsonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyJsonExtension.swift; sourceTree = "<group>"; };
+		4887430B195224D100CAB6E4 /* EasyJsonWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyJsonWrapper.swift; sourceTree = "<group>"; };
+		4887430E1952257600CAB6E4 /* EasyJsonConfigDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyJsonConfigDatasource.swift; sourceTree = "<group>"; };
 		48F4A13D194C4A8300F71E1F /* EasyJsonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyJsonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F4A141194C4A8300F71E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F4A142194C4A8300F71E1F /* EasyJsonFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyJsonFramework.h; sourceTree = "<group>"; };
 		48F4A148194C4A8300F71E1F /* EasyJsonFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyJsonFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F4A14E194C4A8300F71E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F4A14F194C4A8300F71E1F /* EasyJsonFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyJsonFrameworkTests.swift; sourceTree = "<group>"; };
-		48F4A15B194C4AC300F71E1F /* ClassFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassFactory.h; sourceTree = "<group>"; };
-		48F4A15C194C4AC300F71E1F /* ClassFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassFactory.m; sourceTree = "<group>"; };
+		48F4A15B194C4AC300F71E1F /* EasyJsonClassFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyJsonClassFactory.h; sourceTree = "<group>"; };
+		48F4A15C194C4AC300F71E1F /* EasyJsonClassFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyJsonClassFactory.m; sourceTree = "<group>"; };
 		48F4A15D194C4AC300F71E1F /* EasyJsonConfig.json.tpl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EasyJsonConfig.json.tpl; sourceTree = "<group>"; };
 		48F4A15E194C4AC300F71E1F /* EasyJsonConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyJsonConstants.swift; sourceTree = "<group>"; };
 		48F4A163194C4AD100F71E1F /* EasyJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyJson.swift; sourceTree = "<group>"; };
@@ -114,6 +123,11 @@
 				48F4A163194C4AD100F71E1F /* EasyJson.swift */,
 				48F4A164194C4AD100F71E1F /* EasyJsonObject.swift */,
 				480540CC194CE9A60077777F /* EasyJsonTestHelper.swift */,
+				488743081952239A00CAB6E4 /* EasyJsonExtension.swift */,
+				4887430B195224D100CAB6E4 /* EasyJsonWrapper.swift */,
+				4887430E1952257600CAB6E4 /* EasyJsonConfigDatasource.swift */,
+				48F4A15B194C4AC300F71E1F /* EasyJsonClassFactory.h */,
+				48F4A15C194C4AC300F71E1F /* EasyJsonClassFactory.m */,
 				48F4A159194C4A9900F71E1F /* Config */,
 				48F4A140194C4A8300F71E1F /* Supporting Files */,
 			);
@@ -148,8 +162,6 @@
 		48F4A159194C4A9900F71E1F /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				48F4A15B194C4AC300F71E1F /* ClassFactory.h */,
-				48F4A15C194C4AC300F71E1F /* ClassFactory.m */,
 				48F4A15D194C4AC300F71E1F /* EasyJsonConfig.json.tpl */,
 				48F4A15E194C4AC300F71E1F /* EasyJsonConstants.swift */,
 			);
@@ -163,7 +175,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48F4A15F194C4AC300F71E1F /* ClassFactory.h in Headers */,
+				48F4A15F194C4AC300F71E1F /* EasyJsonClassFactory.h in Headers */,
 				48F4A143194C4A8300F71E1F /* EasyJsonFramework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,10 +281,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				488743091952239A00CAB6E4 /* EasyJsonExtension.swift in Sources */,
 				480540CD194CE9A60077777F /* EasyJsonTestHelper.swift in Sources */,
 				48F4A165194C4AD100F71E1F /* EasyJson.swift in Sources */,
-				48F4A160194C4AC300F71E1F /* ClassFactory.m in Sources */,
+				4887430C195224D100CAB6E4 /* EasyJsonWrapper.swift in Sources */,
+				48F4A160194C4AC300F71E1F /* EasyJsonClassFactory.m in Sources */,
 				48F4A166194C4AD100F71E1F /* EasyJsonObject.swift in Sources */,
+				4887430F1952257600CAB6E4 /* EasyJsonConfigDatasource.swift in Sources */,
 				48F4A162194C4AC300F71E1F /* EasyJsonConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +296,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4887430A1952239A00CAB6E4 /* EasyJsonExtension.swift in Sources */,
+				4887430D195224D100CAB6E4 /* EasyJsonWrapper.swift in Sources */,
+				488743101952257600CAB6E4 /* EasyJsonConfigDatasource.swift in Sources */,
 				48F4A150194C4A8300F71E1F /* EasyJsonFrameworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,6 @@ import CoreData
 
 class EasyJsonTestHelper {
     
-    
     // Return NSManagedObject and EasyJsonWrap object with data loaded from json mocks
     class func getObjectParsed(bundle:NSBundle) -> AnyObject[] {
         var objectsParsed = AnyObject[]()

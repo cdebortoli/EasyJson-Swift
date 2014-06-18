@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <CoreData/CoreData.h>
 //! Project version number for EasyJsonFramework.
 FOUNDATION_EXPORT double EasyJsonFrameworkVersionNumber;
 
@@ -15,4 +15,5 @@ FOUNDATION_EXPORT double EasyJsonFrameworkVersionNumber;
 FOUNDATION_EXPORT const unsigned char EasyJsonFrameworkVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <EasyJsonFramework/PublicHeader.h>
-#import <EasyJsonFramework/ClassFactory.h>
+#import <EasyJsonFramework/EasyJsonClassFactory.h>
+

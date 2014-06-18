@@ -7,7 +7,7 @@
 //
 #import <objc/runtime.h>
 
-@interface ClassFactory:NSObject
+@interface EasyJsonClassFactory:NSObject
 
 + (id)initObjectFromClass:(Class)classObject;
 
