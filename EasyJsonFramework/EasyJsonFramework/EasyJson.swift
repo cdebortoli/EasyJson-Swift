@@ -10,25 +10,21 @@ import Foundation
 
 let easyJsonSharedInstance = EasyJson()
 
-// ------ EasyJson ------
-class EasyJson {
-    
-    // Properties
+class EasyJson {    
     let dateFormatter = NSDateFormatter()
     @lazy var easyJsonDatasource = EasyJsonConfigDatasource()
     
-    // Init
     init() {
         dateFormatter.dateFormat = EasyJsonConfig.dateFormat
-        println("EasyJson init")
     }
     
-    // Analyze methods
+    // Analyze an array of Dictionary
     func analyzeJsonArray(jsonArray:AnyObject[], forClass objectClass:AnyClass) -> AnyObject[] {
         var resultArray = AnyObject[]()
         return resultArray
     }
     
+    // Analyze a dDictionary
     func analyzeJsonDictionary(jsonDictionary:Dictionary<String, AnyObject>, forClass objectClass:AnyClass) -> AnyObject? {
         // 1 - Find the config object for the specified class
         let configObjectOptional = easyJsonDatasource[NSStringFromClass(objectClass)]
@@ -43,15 +39,15 @@ class EasyJson {
                 }
             }
             
-            // 3 - Parse & init
+            // 3a - NSManagedObject Parse & init
             if class_getSuperclass(objectClass) is NSManagedObject.Type {
                 var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: EasyJsonConfig.managedObjectContext!) as NSManagedObject
                     
                 for parameter in configObject.parameters {
-                    managedObject.setPropertyWithEasyJsonParameter(parameter, fromJson: jsonFormatedDictionary)
+                    managedObject.setProperty(parameter, fromJson: jsonFormatedDictionary)
                 }
                 return managedObject
-            // 3b - CustomObject
+            // 3b - CustomObject Parse & init
             } else if class_getSuperclass(objectClass) is EasyJsonWrapper.Type {
                 var cobject : AnyObject! = EasyJsonClassFactory.initObjectFromClass(objectClass)
                 (cobject as EasyJsonWrapper).childrenClassReference = objectClass
@@ -63,9 +59,4 @@ class EasyJson {
         }
         return nil
     }
-    
-
 }
-
-// ------ ConfigDatasource ------
-

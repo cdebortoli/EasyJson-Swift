@@ -17,9 +17,9 @@ import Foundation
         if let parameter = parameterObject as? EasyJsonObject.EasyJsonParameterObject {
             
             if jsonDict[parameter.jsonKey] != nil {
-                //                if let objectValue : AnyObject = getValueWith(parameter, fromJson: jsonDict) {
+//                                if let objectValue : AnyObject = getValueWith(parameter, fromJson: jsonDict) {
                 //                    setValue(objectValue, forKey: parameter.attribute)
-                //                }
+//                                }
             }
         }
     }

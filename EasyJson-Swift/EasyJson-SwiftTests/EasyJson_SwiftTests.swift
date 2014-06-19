@@ -21,30 +21,13 @@ class EasyJson_SwiftTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
     func testEasyJson() {
-        let parsedObjects = EasyJsonTestHelper.getObjectParsed(NSBundle(forClass: self.classForCoder))
-        EasyJsonTestHelper.testParsedObjects(parsedObjects, {(completion:(attributeValue: AnyObject?, attributeName: String)[]) -> () in
-            for (attributeValue: AnyObject?, attributeName: String) in completion {
-                println("***Test \(attributeName) \(attributeValue)")
-                if attributeValue is NSSet {
-                    XCTAssert((attributeValue as NSSet).count > 0, "Check relation : \(attributeName)")
-                } else {
-                    XCTAssertNotNil(attributeValue, "Check attributeKey : \(attributeName)")
-                }
-
+        
+        EasyJsonTestHelper.checkMocksFromBundle(NSBundle(forClass: self.dynamicType), {(completion:(attributeValue: AnyObject?, attributeName: String)) -> () in
+            if completion.attributeValue is NSSet {
+                XCTAssert((completion.attributeValue as NSSet).count > 0, "Check relation : \(completion.attributeName)")
+            } else {
+                XCTAssertNotNil(completion.attributeValue, "Check attributeKey : \(completion.attributeName)")
             }
         })
         

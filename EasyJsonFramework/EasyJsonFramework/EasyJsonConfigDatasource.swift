@@ -13,7 +13,6 @@ class EasyJsonConfigDatasource {
     
     init() {
         easyJsonObjects = parseConfigObjectsFromConfigFile()
-        println("EasyJsonConfigDatasource init")
     }
     
     subscript(attributeType: String) -> EasyJsonObject? {
