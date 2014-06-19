@@ -34,6 +34,7 @@
 		48FC67371945129900E94A06 /* aircraftJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FC67341945129900E94A06 /* aircraftJson.json */; };
 		48FC67381945129900E94A06 /* customObjectJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FC67351945129900E94A06 /* customObjectJson.json */; };
 		48FC67391945129900E94A06 /* aircraftJsonWithEnvelope.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FC67361945129900E94A06 /* aircraftJsonWithEnvelope.json */; };
+		48FEDE081953767A00EB1627 /* aircraftsJsonWithEnvelope.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FEDE071953767A00EB1627 /* aircraftsJsonWithEnvelope.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		48FC67341945129900E94A06 /* aircraftJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = aircraftJson.json; sourceTree = "<group>"; };
 		48FC67351945129900E94A06 /* customObjectJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customObjectJson.json; sourceTree = "<group>"; };
 		48FC67361945129900E94A06 /* aircraftJsonWithEnvelope.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = aircraftJsonWithEnvelope.json; sourceTree = "<group>"; };
+		48FEDE071953767A00EB1627 /* aircraftsJsonWithEnvelope.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = aircraftsJsonWithEnvelope.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,10 +167,10 @@
 				48AEC01A1944E38C00A2BECE /* DataModel */,
 				48AEBFFA1944E2EF00A2BECE /* AppDelegate.swift */,
 				48AEBFFF1944E2EF00A2BECE /* ViewController.swift */,
+				48F509FB194640740065DCEC /* CustomObject.swift */,
 				48AEC0011944E2EF00A2BECE /* Main.storyboard */,
 				48AEC0041944E2EF00A2BECE /* Images.xcassets */,
 				48AEBFF81944E2EF00A2BECE /* Supporting Files */,
-				48F509FB194640740065DCEC /* CustomObject.swift */,
 			);
 			path = "EasyJson-Swift";
 			sourceTree = "<group>";
@@ -232,6 +234,7 @@
 				48FC67341945129900E94A06 /* aircraftJson.json */,
 				48FC67351945129900E94A06 /* customObjectJson.json */,
 				48FC67361945129900E94A06 /* aircraftJsonWithEnvelope.json */,
+				48FEDE071953767A00EB1627 /* aircraftsJsonWithEnvelope.json */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				48FC67321945128200E94A06 /* EasyJsonConfig.json in Resources */,
 				48FC67371945129900E94A06 /* aircraftJson.json in Resources */,
 				48FC67391945129900E94A06 /* aircraftJsonWithEnvelope.json in Resources */,
+				48FEDE081953767A00EB1627 /* aircraftsJsonWithEnvelope.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

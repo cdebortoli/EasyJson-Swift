@@ -21,6 +21,13 @@ class EasyJson {
     // Analyze an array of Dictionary
     func analyzeJsonArray(jsonArray:AnyObject[], forClass objectClass:AnyClass) -> AnyObject[] {
         var resultArray = AnyObject[]()
+        for jsonArrayOccurence:AnyObject in jsonArray {
+            if let jsonDict = jsonArrayOccurence as? Dictionary<String, AnyObject> {
+                if let objectFromJson : AnyObject = analyzeJsonDictionary(jsonDict, forClass: objectClass) {
+                    resultArray += objectFromJson
+                }
+            }
+        }
         return resultArray
     }
     

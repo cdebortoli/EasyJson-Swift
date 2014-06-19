@@ -14,7 +14,6 @@ extension NSManagedObject {
     // Set property value
     func setProperty(easyJsonParameter:EasyJsonObject.EasyJsonParameterObject, fromJson jsonDict:Dictionary<String, AnyObject>) {
         if jsonDict[easyJsonParameter.jsonKey] != nil {
-            
             if let managedObjectValue : AnyObject = getValue(easyJsonParameter, fromJsonDictionary: jsonDict) {
                 setValue(managedObjectValue, forKey: easyJsonParameter.attribute)
             }
@@ -37,9 +36,8 @@ extension NSManagedObject {
         
         // Get formated property value
         if let propertyDescription = propertyDescriptionOptional {
-            
             if propertyDescription is NSAttributeDescription {
-                
+
                 if let jsonString = jsonDict[easyJsonParameter.jsonKey]! as? String {
                     return (propertyDescription as NSAttributeDescription).getAttributeValueForEasyJsonValue(jsonString)
                 } else if let jsonNumber = jsonDict[easyJsonParameter.jsonKey]! as? NSNumber {
@@ -48,9 +46,11 @@ extension NSManagedObject {
                 }
                 
             } else if propertyDescription is NSRelationshipDescription {
-                
+
                 if let jsonArray = jsonDict[easyJsonParameter.jsonKey]! as? Dictionary<String, AnyObject>[] {
                     return (propertyDescription as NSRelationshipDescription).getRelationshipValueForEasyJsonArray(jsonArray)
+                } else if let jsonDictRelation = jsonDict[easyJsonParameter.jsonKey]! as? Dictionary<String, AnyObject> {
+                    return easyJsonSharedInstance.analyzeJsonDictionary(jsonDictRelation, forClass: NSClassFromString((propertyDescription as NSRelationshipDescription).destinationEntity.managedObjectClassName))
                 }
                 
             }
@@ -59,7 +59,6 @@ extension NSManagedObject {
     }
     
 }
-
 
 extension NSAttributeDescription {
     func getAttributeValueForEasyJsonValue(jsonValue:String) -> AnyObject? {

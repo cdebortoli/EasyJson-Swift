@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 struct EasyJsonConfig {
-    static let dateFormat = "yyyy-MM-dd"
-    static let envelopeFormat = false
+    static var dateFormat = "yyyy-MM-dd"
+    static var envelopeFormat = false
     static var managedObjectContext:NSManagedObjectContext?
 }
 
