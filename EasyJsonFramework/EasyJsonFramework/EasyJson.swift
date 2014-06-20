@@ -40,7 +40,7 @@ class EasyJson {
             // 2 - Json Dictionary
             var jsonFormatedDictionary = jsonDictionary
             // Envelope
-            if EasyJsonConfig.envelopeFormat {
+            if EasyJsonConfig.jsonWithEnvelope {
                 if let dictUnwrapped = jsonDictionary[configObject.classInfo.jsonKey]! as? Dictionary<String, AnyObject> {
                     jsonFormatedDictionary = dictUnwrapped
                 }

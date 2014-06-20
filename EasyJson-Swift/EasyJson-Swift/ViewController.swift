@@ -13,7 +13,8 @@ class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        EasyJsonConfig.envelopeFormat = true
+        EasyJsonConfig.jsonWithEnvelope = true
+        EasyJsonConfig.dateFormat = "yyyy-MM-dd"
         EasyJsonConfig.managedObjectContext = databaseManagerSharedInstance.databaseCore.managedObjectContext
 
         let dict = dictionaryFromService("aircraftJsonWithEnvelope")
