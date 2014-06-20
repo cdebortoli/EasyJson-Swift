@@ -85,6 +85,7 @@ TODO
 ##How to test it
 EasyJsonFramework has a test helper to analyze your JSON Mocks.
 To use the tests:
+
 1. Import EasyJsonFramework in your tests files/bundle.
 2. Create the mocks of your JSON Services with files which follows this name pattern : "EasyJsonMock[CustomTitle].json". Replace [CustomTitle] by the title of your choice.
 3. Call the "checkMocksFromBundle" of "EasyJsonTestHelper".
