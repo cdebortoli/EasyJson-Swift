@@ -1,4 +1,4 @@
-EasyJson-Swift
+EasyJson-Swift (JSON to NSManagedObject and vice versa)
 ==============
 
 ##How to install it
