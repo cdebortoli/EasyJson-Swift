@@ -1,5 +1,7 @@
-EasyJson-Swift (JSON to NSManagedObject and vice versa)
+EasyJson-Swift
 ==============
+JSON to NSManagedObject and vice versa
+-------------
 
 ##How to install it
 1. Drag EasyJsonFramework in your project and add EasyJsonFramework as an embedded Framework.
