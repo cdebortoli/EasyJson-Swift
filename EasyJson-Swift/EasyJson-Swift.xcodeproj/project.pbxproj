@@ -11,7 +11,6 @@
 		480540B9194CE0A50077777F /* EasyJsonMockAircraftWithEnvelope.json in Resources */ = {isa = PBXBuildFile; fileRef = 480540B5194CE0A50077777F /* EasyJsonMockAircraftWithEnvelope.json */; };
 		480540BA194CE0A50077777F /* EasyJsonMockCustomObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 480540B6194CE0A50077777F /* EasyJsonMockCustomObject.json */; };
 		480540BB194CE0A50077777F /* EasyJsonMockCustomObjects.json in Resources */ = {isa = PBXBuildFile; fileRef = 480540B7194CE0A50077777F /* EasyJsonMockCustomObjects.json */; };
-		480540C3194CE7A60077777F /* EasyJsonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4A1AA194C58EC00F71E1F /* EasyJsonFramework.framework */; };
 		48AEBFFB1944E2EF00A2BECE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AEBFFA1944E2EF00A2BECE /* AppDelegate.swift */; };
 		48AEBFFE1944E2EF00A2BECE /* EasyJson_Swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48AEBFFC1944E2EF00A2BECE /* EasyJson_Swift.xcdatamodeld */; };
 		48AEC0001944E2EF00A2BECE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AEBFFF1944E2EF00A2BECE /* ViewController.swift */; };
@@ -28,7 +27,8 @@
 		48AEC02A1944ECBF00A2BECE /* Aircraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 48AEC0281944ECBF00A2BECE /* Aircraft.m */; };
 		48AEC02D1944ECBF00A2BECE /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 48AEC02C1944ECBF00A2BECE /* Airport.m */; };
 		48AEC02E1944ECBF00A2BECE /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 48AEC02C1944ECBF00A2BECE /* Airport.m */; };
-		48F4A1AD194C58F800F71E1F /* EasyJsonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4A1AA194C58EC00F71E1F /* EasyJsonFramework.framework */; };
+		48BE87FA195580B500E911FC /* EasyJsonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4A1AA194C58EC00F71E1F /* EasyJsonFramework.framework */; };
+		48BE87FD195580BC00E911FC /* EasyJsonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4A1AA194C58EC00F71E1F /* EasyJsonFramework.framework */; };
 		48F509FC194640740065DCEC /* CustomObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F509FB194640740065DCEC /* CustomObject.swift */; };
 		48FC67321945128200E94A06 /* EasyJsonConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FC67311945128200E94A06 /* EasyJsonConfig.json */; };
 		48FC67371945129900E94A06 /* aircraftJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FC67341945129900E94A06 /* aircraftJson.json */; };
@@ -59,6 +59,20 @@
 			remoteGlobalIDString = 48AEBFF41944E2EF00A2BECE;
 			remoteInfo = "EasyJson-Swift";
 		};
+		48BE87F8195580A500E911FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48AEBFED1944E2EF00A2BECE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48AEBFF41944E2EF00A2BECE;
+			remoteInfo = "EasyJson-Swift";
+		};
+		48BE87FB195580B600E911FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48AEBFED1944E2EF00A2BECE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48AEBFF41944E2EF00A2BECE;
+			remoteInfo = "EasyJson-Swift";
+		};
 		48F4A1A9194C58EC00F71E1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48F4A1A4194C58EC00F71E1F /* EasyJsonFramework.xcodeproj */;
@@ -72,6 +86,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 48F4A148194C4A8300F71E1F;
 			remoteInfo = EasyJsonFrameworkTests;
+		};
+		48FC3BF21955802800B83C8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48AEBFED1944E2EF00A2BECE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48AEBFF41944E2EF00A2BECE;
+			remoteInfo = "EasyJson-Swift";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -114,7 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48F4A1AD194C58F800F71E1F /* EasyJsonFramework.framework in Frameworks */,
+				48BE87FA195580B500E911FC /* EasyJsonFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				480540C3194CE7A60077777F /* EasyJsonFramework.framework in Frameworks */,
+				48BE87FD195580BC00E911FC /* EasyJsonFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +294,9 @@
 				48AEC00C1944E2EF00A2BECE /* PBXTargetDependency */,
 				480540BE194CE79C0077777F /* PBXTargetDependency */,
 				480540C2194CE7A30077777F /* PBXTargetDependency */,
+				48FC3BF31955802800B83C8D /* PBXTargetDependency */,
+				48BE87F9195580A500E911FC /* PBXTargetDependency */,
+				48BE87FC195580B600E911FC /* PBXTargetDependency */,
 			);
 			name = "EasyJson-SwiftTests";
 			productName = "EasyJson-SwiftTests";
@@ -414,6 +438,21 @@
 			isa = PBXTargetDependency;
 			target = 48AEBFF41944E2EF00A2BECE /* EasyJson-Swift */;
 			targetProxy = 48AEC00B1944E2EF00A2BECE /* PBXContainerItemProxy */;
+		};
+		48BE87F9195580A500E911FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48AEBFF41944E2EF00A2BECE /* EasyJson-Swift */;
+			targetProxy = 48BE87F8195580A500E911FC /* PBXContainerItemProxy */;
+		};
+		48BE87FC195580B600E911FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48AEBFF41944E2EF00A2BECE /* EasyJson-Swift */;
+			targetProxy = 48BE87FB195580B600E911FC /* PBXContainerItemProxy */;
+		};
+		48FC3BF31955802800B83C8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48AEBFF41944E2EF00A2BECE /* EasyJson-Swift */;
+			targetProxy = 48FC3BF21955802800B83C8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

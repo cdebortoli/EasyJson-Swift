@@ -78,8 +78,12 @@ To bind a array of JSON Objects to NSManagedObjects:
 
     var aircrafts = easyJsonSharedInstance.analyzeJsonArray(aircraftArray, forClass: Aircraft.classForCoder()) as Aircraft[]
 
-To convert a NSmanagedObject in a Dictionary which is ready for JSON Serialization:
-TODO
+To convert a NSmanagedObject in a Dictionary which is ready for JSON Serialization, call the NSManagedObject method named "getEasyJson".
+   
+     func getEasyJson(relationshipClassesToIgnore:String[] = String[]()) -> Dictionary <String, AnyObject>{
+
+In parameter of this method, you can pass the string representations of Class which will be ignored during the parsing.
+The EasyJson Framework use this array parameter with the recursive call to avoid infinite loops.
 
 
 ##How to test it
@@ -104,8 +108,3 @@ Exemple of use :
             }
         })
 
-
-
-### TODO
-1. Manage dates
-2. NSManagedObject and object to JSON

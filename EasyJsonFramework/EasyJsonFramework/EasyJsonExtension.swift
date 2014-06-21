@@ -7,9 +7,13 @@
 //
 
 import Foundation
-
+import CoreData
+import EasyJsonFramework
 
 extension NSManagedObject {
+    /*
+    * JSON -> SWIFT
+    */
     
     // Set property value
     func setProperty(easyJsonParameter:EasyJsonObject.EasyJsonParameterObject, fromJson jsonDict:Dictionary<String, AnyObject>) {
@@ -58,6 +62,45 @@ extension NSManagedObject {
         return nil
     }
     
+    /*
+    * SWIFT -> JSON
+    */
+    func getEasyJson(relationshipClassesToIgnore:String[] = String[]()) -> Dictionary <String, AnyObject>{
+        var jsonDict = Dictionary <String, AnyObject>()
+        
+        var newRelationshipClassesToIgnore = String[]()
+        newRelationshipClassesToIgnore += relationshipClassesToIgnore
+        newRelationshipClassesToIgnore += NSStringFromClass(self.classForCoder)
+
+        if let configObject = easyJsonSharedInstance.easyJsonDatasource[NSStringFromClass(self.classForCoder)] {
+            for parameter in configObject.parameters {
+                if let managedObjectValue:AnyObject? = self.valueForKey(parameter.attribute) {
+                    
+                    if managedObjectValue is NSSet {
+                        var relationshipObjects = AnyObject[]()
+                        setloop: for objectFromSet:AnyObject in (managedObjectValue as NSSet).allObjects {
+                            if (contains(newRelationshipClassesToIgnore, NSStringFromClass(objectFromSet.classForCoder))) {
+                                break setloop
+                            }
+                            relationshipObjects += (objectFromSet as NSManagedObject).getEasyJson(relationshipClassesToIgnore: newRelationshipClassesToIgnore)
+                        }
+                        if !relationshipObjects.isEmpty {
+                            jsonDict[parameter.jsonKey] = relationshipObjects
+                        }
+                    
+                    } else {
+                        jsonDict[parameter.jsonKey] = managedObjectValue
+                    }
+                }
+            }
+            
+            if EasyJsonConfig.jsonWithEnvelope == true {
+                return [configObject.classInfo.jsonKey : jsonDict]
+            }
+        }
+        return jsonDict
+
+    }
 }
 
 extension NSAttributeDescription {

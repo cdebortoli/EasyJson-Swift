@@ -13,18 +13,26 @@ class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
+        // ------------------ Configuration ------------------
         EasyJsonConfig.jsonWithEnvelope = true
         EasyJsonConfig.dateFormat = "yyyy-MM-dd"
         EasyJsonConfig.managedObjectContext = databaseManagerSharedInstance.databaseCore.managedObjectContext
 
+        // ------------------ Get Aircraft from JSON ------------------
         let dict = dictionaryFromService("aircraftJsonWithEnvelope")
-        var a1:Aircraft? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
-//        println(a1)
+        var aircraft:Aircraft? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft
+//        println(aircraft)
         
+        // ------------------ Get multiple Aircrafts from JSON ------------------
         let aircraftArray = arrayFromJson("aircraftsJsonWithEnvelope")
         var aircrafts = easyJsonSharedInstance.analyzeJsonArray(aircraftArray, forClass: Aircraft.classForCoder()) as Aircraft[]
-        println(aircrafts)
+//        println(aircrafts)
         
+        // ------------------ Get JSON from Aircraft ------------------
+        let aircraftJsonRepresentation = aircraft?.getEasyJson()
+        println(aircraftJsonRepresentation)
+
+        // ------------------ Get Custom object from JSON ------------------
 //        let customObjectDict = dictionaryFromService("customObjectJson")
 //        var customObject:CustomObject? = easyJsonSharedInstance.analyzeJsonDictionary(customObjectDict, forClass: CustomObject.self) as? CustomObject
 
