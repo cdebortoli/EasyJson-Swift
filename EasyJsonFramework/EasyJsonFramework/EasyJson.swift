@@ -48,8 +48,18 @@ class EasyJson {
             
             // 3a - NSManagedObject Parse & init
             if class_getSuperclass(objectClass) is NSManagedObject.Type {
-                var managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: EasyJsonConfig.managedObjectContext!) as NSManagedObject
-                    
+                if EasyJsonConfig.managedObjectContext == nil {
+                    return nil
+                }
+                
+                var managedObject:NSManagedObject
+                if EasyJsonConfig.temporaryNSManagedObjectInstance == false {
+                    managedObject = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(objectClass), inManagedObjectContext: EasyJsonConfig.managedObjectContext!) as NSManagedObject
+                } else {
+                    let entityDescription = NSEntityDescription.entityForName(NSStringFromClass(objectClass), inManagedObjectContext: EasyJsonConfig.managedObjectContext)
+                    managedObject = NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: nil)
+                }
+                
                 for parameter in configObject.parameters {
                     managedObject.setProperty(parameter, fromJson: jsonFormatedDictionary)
                 }

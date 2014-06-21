@@ -17,7 +17,8 @@ class ViewController: UIViewController {
         EasyJsonConfig.jsonWithEnvelope = true
         EasyJsonConfig.dateFormat = "yyyy-MM-dd"
         EasyJsonConfig.managedObjectContext = databaseManagerSharedInstance.databaseCore.managedObjectContext
-
+        EasyJsonConfig.temporaryNSManagedObjectInstance = true
+        
         // ------------------ Get Aircraft from JSON ------------------
         let dict = dictionaryFromService("aircraftJsonWithEnvelope")
         var aircraft:Aircraft? = easyJsonSharedInstance.analyzeJsonDictionary(dict, forClass:Aircraft.classForCoder()) as? Aircraft

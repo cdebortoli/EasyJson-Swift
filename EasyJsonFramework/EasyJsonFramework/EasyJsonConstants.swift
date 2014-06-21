@@ -13,6 +13,7 @@ struct EasyJsonConfig {
     static var dateFormat = "yyyy-MM-dd"
     static var jsonWithEnvelope = false
     static var managedObjectContext:NSManagedObjectContext?
+    static var temporaryNSManagedObjectInstance = false
 }
 
 

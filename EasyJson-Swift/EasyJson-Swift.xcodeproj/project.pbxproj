@@ -73,6 +73,13 @@
 			remoteGlobalIDString = 48AEBFF41944E2EF00A2BECE;
 			remoteInfo = "EasyJson-Swift";
 		};
+		48BE87FE1955CD3B00E911FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48AEBFED1944E2EF00A2BECE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48AEBFF41944E2EF00A2BECE;
+			remoteInfo = "EasyJson-Swift";
+		};
 		48F4A1A9194C58EC00F71E1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48F4A1A4194C58EC00F71E1F /* EasyJsonFramework.xcodeproj */;
@@ -297,6 +304,7 @@
 				48FC3BF31955802800B83C8D /* PBXTargetDependency */,
 				48BE87F9195580A500E911FC /* PBXTargetDependency */,
 				48BE87FC195580B600E911FC /* PBXTargetDependency */,
+				48BE87FF1955CD3B00E911FC /* PBXTargetDependency */,
 			);
 			name = "EasyJson-SwiftTests";
 			productName = "EasyJson-SwiftTests";
@@ -448,6 +456,11 @@
 			isa = PBXTargetDependency;
 			target = 48AEBFF41944E2EF00A2BECE /* EasyJson-Swift */;
 			targetProxy = 48BE87FB195580B600E911FC /* PBXContainerItemProxy */;
+		};
+		48BE87FF1955CD3B00E911FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48AEBFF41944E2EF00A2BECE /* EasyJson-Swift */;
+			targetProxy = 48BE87FE1955CD3B00E911FC /* PBXContainerItemProxy */;
 		};
 		48FC3BF31955802800B83C8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
