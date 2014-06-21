@@ -64,12 +64,14 @@ Set the date format used to analyze your json.
     EasyJsonConfig.dateFormat = "yyyy-MM-dd"
 
 **Managed Object Context**
+
 Set your managedObjectContext to allow EasyJson to init an NSManagedObject.
 
     EasyJsonConfig.managedObjectContext = yourManagedObjectContext
 
 **Temporary managed object**
-If you doesn't want to store the parsed objects in your ManagedObjectContext, you need to set the temporaryNSManagedObjectInstance parameter to true.
+
+If you don't want to store the parsed objects in your ManagedObjectContext, you need to set the temporaryNSManagedObjectInstance parameter to true.
 
     EasyJsonConfig.temporaryNSManagedObjectInstance = true
 
